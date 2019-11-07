@@ -851,7 +851,7 @@ func (s *DB) log(v ...interface{}) {
 
 func (s *DB) slog(sql string, t time.Time, vars ...interface{}) {
 	queryTime := NowFunc().Sub(t)
-	if s.logMode == detailedLogMode || queryTime > 100*time.Millisecond {
+	if s.logMode == detailedLogMode || queryTime > 500*time.Millisecond {
 		s.print("sql", fileWithLineNum(), queryTime, sql, vars, s.RowsAffected)
 	}
 }
